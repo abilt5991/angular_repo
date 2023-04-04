@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="/angular_repo/js/home.js"></script>
+<body ng-app="myApp">
+
+<h1 >Lets get started with fireworks!!!</h1>
+<p>We have a paragraph. When we click on the replace button, the instances of "abi" will be replaced with the value in the input textbox</p>
+
+<div ng-controller="myCtrl">
+    
+Replace What: <input type="text" ng-model="replaceWhat"><br><br>
+Replace With: <input type="text" ng-model="replaceWith"><br><br>
+    <pre>{{wholePassage}}</pre>
+    <br><input type="button" value="Replace" ng-click="replaceWord();">
+    
+</div>
+
+</body>
+</html>

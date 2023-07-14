@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Student Profile</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/js/student.js"></script>
+</head>
+<body ng-app="studentApp">
+    <div ng-controller="showController as show">
+        <h1>STUDENT PORTAL</h1>
+        <h5>One-time binding, Many controllers, "controller as" </h5>
+        <!-- NOTE: Here, we will use one-time binding for interpolation -->
+        <p>Name: {{::show.name}}</p> <!-- NOTE: The values are properties of the controller instance, 'show' -->
+        <p>Enroll number: {{::show.roll_num}}</p>
+        <p>Course: {{::show.course}}</p>
+        <p>College/University: {{::show.college}}</p>
+    </div>
+    
+    <div ng-controller="scoreController as score"> <!-- controller instance -->
+        <h3>SCORE BOARD:</h3>
+        <table>
+            <th></th>
+            <th>SUBJECT <span ng-click="score.ordermeBy('subject')">&#8595;</span></th> <!-- NOTE: The values are properties of the controller instance, 'score' -->
+            <th>SCORE <span ng-click="score.ordermeBy('score')">&#8595;</span></th>
+            <tr ng-repeat = "sub in score.studentScore">
+                <td>{{$index + 1}}</td>
+                <td>{{sub.subject }}</td>
+                <td>{{sub.score}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div ng-controller="skillController as manageSkills">
+        <h3>SKILL SET</h3>
+        Skill: <input type="text" ng-model="manageSkills.skill">&nbsp; 
+        Knowledge: <select ng-model="manageSkills.selected" ng-options="item for item in manageSkills.knowledgeRank"></select>
+        &nbsp; &nbsp; &nbsp; <button value="add" ng-click="manageSkills.addSkill();">Add Skill</button>
+        <br><br>
+        
+        <div ng-controller = "displaySkillsCtrl as skills2">
+            <table>
+            <th></th>
+            <th>SKILL</th>
+            <th>KNOWLEDGE</th>
+            <tr ng-repeat="item in skills2.skillset">
+                <td>{{$index+1}}</td>
+                <td>{{item.skill}}</td>
+                <td>{{item.knowledge}}</td>
+            </tr>
+            </table>
+        </div>  
+
+        <p ng-if="manageSkills.errorMsg">{{manageSkills.errorMsg}}</p>
+    </div>
+    
+    <div ng-controller="achievementsController as achievements">
+    </div>
+    
+    
+</body>
+
+</html>

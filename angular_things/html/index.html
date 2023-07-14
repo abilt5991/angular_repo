@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="/angular_things/js/filter.js"></script>
+<body ng-app="filterApp">  
+    <h5>Custom Filters in Ang JS (using Filter Factory funtion) </h5>
+    <h2>Let's start coding with Fireworks!!</h2>
+    <p>We have a paragraph. When we click on the replace button, the instances of the given word will be replaced with the value in the replace with textbox.</p>
+    <p>Try replacing "Abi"</p>
+
+    <div ng-controller="filterCtrl">
+        Replace Me:  <input type="text" ng-model="replaceMe"><br><br>
+        Replace With: <input type="text" ng-model="replaceWith"><br>
+        <pre>{{thePassage}}</pre><br>
+        <p ng-if="errorMsg">Error: {{errorMsg}}</p>
+        <input type="button" value="Replace" ng-click="replaceWord();">
+        
+    </div>
+      
+</body>  
+</html>
